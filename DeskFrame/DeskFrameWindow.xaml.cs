@@ -1621,7 +1621,7 @@ namespace DeskFrame
                 missingFolderGrid.Visibility = Visibility.Visible;
             }
             InitializeFileWatchers();
-
+            UpdatePosition();
             if (Instance.SnapWidthToIconWidth_PlusScrollbarWidth)
             {
                 FileWrapPanel.Margin = new Thickness(6, 5, 0, 5);
@@ -1668,6 +1668,10 @@ namespace DeskFrame
                 showFolderInGrid.Visibility = Visibility.Visible;
             }
             ChangeBackgroundOpacity(Instance.Opacity);
+        }
+        private async void UpdatePosition()
+        {
+            await AdjustPositionAsync();
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
